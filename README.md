@@ -1,3 +1,5 @@
+![Build status](http://strider.mothership.odtag.se/arood/lunch-bot/badge?branch=master)
+
 # lunch-bot
 
 Lunch-bot for the Adeprimo Slack team. It downloads a bunch of web pages and run them through the jsdom module, which allows us to more easily retrieve the content we're interested in.
@@ -27,6 +29,6 @@ Test-mode
 
 [ Object {
     title: 'McDonalds',
-value: 'McFeast & Co / Chicken & Bacon McWrap',
+    value: 'McFeast & Co / Chicken & Bacon McWrap',
     short: true } ]
 ```
