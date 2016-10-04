@@ -24,6 +24,7 @@ var lunchSources = [
 	{ url: "http://www.restaurangtrerum.se/veckans-lunchmeny/", js: "trerum.js" },
 	{ url: "http://www.mcdonalds.se/se/pa-mcdonalds/kampanj/2015/mclunch.html", js: "mcdonalds.js" },
 	{ url: "http://www.hosandreas.se/", js: "hosandreas.js" },
+	{ url: "https://www.max.se/sv/Maten/Meny/Maltider/Dagens-Lunch/", js: "max.js" },
 	{ url: "https://gist.github.com/madr/ada482c76a33aa6c012d", js: "skamborgen.js" }
 ];
 
