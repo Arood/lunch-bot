@@ -14,8 +14,9 @@ Add your own sources or set the schedule for posting in index.js.
 
 First you need to setup an [Incoming WebHook](https://api.slack.com/incoming-webhooks) for your Slack team. Next, create a `secret.json` file, where you'll put an URL for your webhook:
 
-    /* secret.json */
-    { "slack": "https://url.for/the/webhook" }
+```json
+{ "slack": "https://url.for/the/webhook" }
+```
 
 When you have done that, you should be able to start the bot by running `npm start`.
 
