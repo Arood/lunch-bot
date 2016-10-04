@@ -126,3 +126,7 @@ var j = schedule.scheduleJob(rule2, function() {
 		}
 	});
 });
+
+if (process.argv.length > 2 && process.argv[2] == "trigger") {
+	start();
+}
