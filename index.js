@@ -20,13 +20,13 @@ rule.minute = 0;
 // Sites to scrape for lunches
 
 var lunchSources = [
-	{ url: "http://lunchguide.nu/ostersund", js: "lunchguide.js" },
-	{ url: "http://www.restaurangtrerum.se/veckans-lunchmeny/", js: "trerum.js" },
-	{ url: "http://www.mcdonalds.se/se/pa-mcdonalds/kampanj/2015/mclunch.html", js: "mcdonalds.js" },
-	{ url: "http://www.hosandreas.se/", js: "hosandreas.js" },
-	{ url: "https://www.max.se/sv/Maten/Meny/Maltider/Dagens-Lunch/", js: "max.js" },
-	{ url: "http://example.com", js: "elvans.js" },
-	{ url: "https://gist.github.com/madr/ada482c76a33aa6c012d", js: "skamborgen.js" }
+	{ url: "http://lunchguide.nu/ostersund", js: "lunchguide.js", name: "Lunchguide" },
+	{ url: "http://www.restaurangtrerum.se/veckans-lunchmeny/", js: "trerum.js", name: "Tre Rum" },
+	{ url: "http://www.mcdonalds.se/se/pa-mcdonalds/kampanj/2015/mclunch.html", js: "mcdonalds.js", name: "McDonalds" },
+	{ url: "http://www.hosandreas.se/", js: "hosandreas.js", name: "Hos Andreas" },
+	{ url: "https://www.max.se/sv/Maten/Meny/Maltider/Dagens-Lunch/", js: "max.js", name: "Max" },
+	{ url: "http://example.com", js: "elvans.js", name: "Sibylla" },
+	{ url: "https://gist.github.com/madr/ada482c76a33aa6c012d", js: "skamborgen.js", name: "Skamborgen" }
 ];
 
 //
@@ -43,12 +43,14 @@ var getLunches = function(array, done) {
 		  url: current.url,
 			src: [fs.readFileSync("scripts/"+current.js, "utf-8")],
 		  done: function (err, window) {
-				if (window.scrapedField) {
-					array.push(window.scrapedField);
-				} else if (window.scrapedFields) {
-					array = array.concat(window.scrapedFields);
+				if (!err && window) {
+					if (window.scrapedField) {
+						array.push(window.scrapedField);
+					} else if (window.scrapedFields) {
+						array = array.concat(window.scrapedFields);
+					}
+					window.close();
 				}
-				window.close();
 				if (ls.length > 0) {
 					getLunches(array, done);
 				} else {
