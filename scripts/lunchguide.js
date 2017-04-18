@@ -13,7 +13,7 @@ for (var i=0; i<scripts.length; i++) {
 
 var dayName = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"];
 var lunchBlacklist = [
-  "Hos Andreas", "BBQ Garden", "Bilbolagets Cafe", "Mat -& grillbaren", "Quality Hotel & resort", "Shanghai Wok", "Restaurang Hov","Arctura", "Arenarestaurangen",
+  "Restaurang Frösö Strand", "Hos Andreas", "BBQ Garden", "Bilbolagets Cafe", "Mat -& grillbaren", "Quality Hotel & resort", "Restaurang Hov","Arctura", "Arenarestaurangen",
   "Bowlinghallen Polaris", "Carlslunds Krog", "OSD", "Scandic Syd", "Tages", "ZIL Restaurang", "Restaurang Cultum", "Matbiten", "Torsta Gårdsrestaurang",
   "Kvarterskrogen Oden", "LITauen Mat & Kaffe ", "Spiltas Krog", "Restaurang Källan", "Eurest", "2 Kockar", "Köket", "Kungsgården"];
 
