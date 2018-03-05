@@ -23,7 +23,7 @@ var lunchSources = [
 	{ url: "http://lunchguide.nu/ostersund", js: "lunchguide.js", name: "Lunchguide" },
 	{ url: "http://www.restaurangtrerum.se/veckans-lunchmeny/", js: "trerum.js", name: "Tre Rum" },
 	{ url: "http://www.mcdonalds.se/se/pa-mcdonalds/kampanj/2015/mclunch.html", js: "mcdonalds.js", name: "McDonalds" },
-	{ url: "http://www.hosandreas.se/", js: "hosandreas.js", name: "Hos Andreas" },
+	//{ url: "http://www.hosandreas.se/", js: "hosandreas.js", name: "Hos Andreas" },
 	{ url: "https://www.max.se/sv/Maten/Meny/Maltider/Dagens-Lunch/", js: "max.js", name: "Max" },
 	{ url: "http://example.com", js: "elvans.js", name: "Sibylla" },
 	{ url: "https://gist.github.com/madr/ada482c76a33aa6c012d", js: "skamborgen.js", name: "Skamborgen" }
