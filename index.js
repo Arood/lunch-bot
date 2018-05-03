@@ -125,7 +125,7 @@ var j = schedule.scheduleJob(rule2, function() {
 		method: 'post',
 		json: true,
 		body: {
-			text: "<@neme>: Nu börjar lunchen"
+			text: "<@peder>: Nu börjar lunchen"
 		}
 	});
 });
