@@ -14,7 +14,7 @@ var request = require('request'),
 
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [1, 2, 3, 4, 5];
-rule.hour = 11;
+rule.hour = 10;
 rule.minute = 0;
 
 // Sites to scrape for lunches
@@ -111,7 +111,7 @@ var start = function() {
 			var payload = {
 				"@type": "MessageCard",
 				"@context": "https://schema.org/extensions",
-				"themeColor": "0078D7",
+				"themeColor": "febe36",
 				"text": "Dagens lunch",
 				"sections": [{
 					"facts": fields.map(function(field) {
