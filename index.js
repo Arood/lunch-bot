@@ -20,9 +20,8 @@ rule.minute = 0;
 // Sites to scrape for lunches
 
 var lunchSources = [
-	{ url: "http://lunchguide.nu/ostersund", js: "lunchguide.js", name: "Lunchguide" },
+	{ url: "http://lunchguide.nu/?page=ostersund", js: "lunchguide.js", name: "Lunchguide" },
 	{ url: "http://www.restaurangtrerum.se/veckans-lunchmeny/", js: "trerum.js", name: "Tre Rum" },
-	{ url: "http://www.mcdonalds.se/se/pa-mcdonalds/kampanj/2015/mclunch.html", js: "mcdonalds.js", name: "McDonalds" },
 	//{ url: "http://www.hosandreas.se/", js: "hosandreas.js", name: "Hos Andreas" },
 	{ url: "https://www.max.se/sv/Maten/Meny/Maltider/Dagens-Lunch/", js: "max.js", name: "Max" },
 	{ url: "http://example.com", js: "elvans.js", name: "Sibylla" },
@@ -77,7 +76,7 @@ if (process.argv.length > 2 && process.argv[2] == "test") {
 }
 
 try {
-	var webhook = require('./secret.json').slack;
+	var secrets = require('./secret.json');
 } catch (ex) {
 	console.error(ex);
 	return;
@@ -86,25 +85,51 @@ try {
 var start = function() {
 	ls = lunchSources.slice();
 
-	var payload = {
-		attachments: [
-			{
-				fallback: "Dagens lunch",
-				fields: []
-			}
-		]
-	};
 
 	getLunches([], function(fields) {
 
-		payload.attachments[0].fields = fields;
+		if (secrets.slack) {
 
-		request({
-			url: webhook,
-			method: 'post',
-			json: true,
-			body: payload
-		});
+			var payload = {
+				attachments: [
+					{
+						fallback: "Dagens lunch",
+						fields: fields
+					}
+				]
+			};
+			request({
+				url: secrets.slack,
+				method: 'post',
+				json: true,
+				body: payload
+			});	
+		}
+
+		if (secrets.teams) {
+			var i=1;
+			var payload = {
+				"@type": "MessageCard",
+				"@context": "https://schema.org/extensions",
+				"themeColor": "0078D7",
+				"text": "Dagens lunch",
+				"sections": [{
+					"facts": fields.map(function(field) {
+						var values = field.value.split("\n").map(function(val) { 
+							i++; return { "name": " ", "value": val }
+						});
+						values[0].name = field.title;
+						return values;
+					}).reduce((acc, val) => acc.concat(val), [])
+				}]
+			};
+			request({
+				url: secrets.teams,
+				method: 'post',
+				json: true,
+				body: payload
+			});	
+		}
 
 	});
 
@@ -114,21 +139,21 @@ var j = schedule.scheduleJob(rule, start);
 
 // Important stuff
 
-var rule2 = new schedule.RecurrenceRule();
-rule2.dayOfWeek = [1, 2, 3, 4, 5];
-rule2.hour = 12;
-rule2.minute = 0;
+// var rule2 = new schedule.RecurrenceRule();
+// rule2.dayOfWeek = [1, 2, 3, 4, 5];
+// rule2.hour = 12;
+// rule2.minute = 0;
 
-var j = schedule.scheduleJob(rule2, function() {
-	request({
-		url: webhook,
-		method: 'post',
-		json: true,
-		body: {
-			text: "<@peder>: Nu börjar lunchen"
-		}
-	});
-});
+// var j = schedule.scheduleJob(rule2, function() {
+// 	request({
+// 		url: webhook,
+// 		method: 'post',
+// 		json: true,
+// 		body: {
+// 			text: "<@peder>: Nu börjar lunchen"
+// 		}
+// 	});
+// });
 
 if (process.argv.length > 2 && process.argv[2] == "trigger") {
 	start();
