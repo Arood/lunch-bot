@@ -20,11 +20,12 @@ rule.minute = 0;
 // Sites to scrape for lunches
 
 var lunchSources = [
-	{ url: "http://lunchguide.nu/?page=ostersund", js: "lunchguide.js", name: "Lunchguide" },
-	{ url: "http://www.restaurangtrerum.se/veckans-lunchmeny/", js: "trerum.js", name: "Tre Rum" },
+	{ url: "https://www.matochmat.se/lunch/ostersund", js: "matochmat.js", name: "Mat och mat" },
+	//{ url: "http://lunchguide.nu/?page=ostersund", js: "lunchguide.js", name: "Lunchguide" },
+	//{ url: "http://www.restaurangtrerum.se/veckans-lunchmeny/", js: "trerum.js", name: "Tre Rum" },
 	//{ url: "http://www.hosandreas.se/", js: "hosandreas.js", name: "Hos Andreas" },
-	{ url: "https://www.max.se/sv/Maten/Meny/Maltider/Dagens-Lunch/", js: "max.js", name: "Max" },
-	{ url: "http://example.com", js: "elvans.js", name: "Sibylla" },
+	//{ url: "https://www.max.se/sv/Maten/Meny/Maltider/Dagens-Lunch/", js: "max.js", name: "Max" },
+	//{ url: "http://example.com", js: "elvans.js", name: "Sibylla" },
 	{ url: "https://gist.github.com/madr/ada482c76a33aa6c012d", js: "skamborgen.js", name: "Skamborgen" }
 ];
 
