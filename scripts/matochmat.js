@@ -70,4 +70,4 @@ restaurants = restaurants.map(function(rest) {
   return !!rest.value;
 });
 
-window.scrapedFields.push(restaurants);
+window.scrapedFields = restaurants;
