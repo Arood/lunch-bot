@@ -51,7 +51,9 @@ restaurants = restaurants.map(function(rest) {
   for (var i=0; i<window.ssrGlobals.lunchMenuData.length; i++) {
     var lunch = window.ssrGlobals.lunchMenuData[i];
     if (lunch.restaurantId == rest.id) {
-      lunch.content = JSON.parse(lunch.content);
+      if (typeof lunch.content == "string") {
+        lunch.content = JSON.parse(lunch.content);
+      }
       var day = dayName[(new Date).getDay()-1];
       if (lunch.content[day]) {
         restaurant.value = lunch.content[day].map(function(d) {
