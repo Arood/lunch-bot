@@ -42,6 +42,11 @@ var getLunches = function(array, done) {
 		jsdom.env({
 		  url: current.url,
 			src: [fs.readFileSync("scripts/"+current.js, "utf-8")],
+			features: {
+				FetchExternalResources: ["script"],
+				ProcessExternalResources: ["script"],
+				SkipExternalResources: false
+			},
 		  done: function (err, window) {
 				if (!err && window) {
 					if (window.scrapedField) {
