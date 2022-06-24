@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Arood/lunch-bot#readme",
   "dependencies": {
-    "jsdom": "^8.5.0",
+    "jsdom": "^16.5.0",
     "node-schedule": "^1.1.0",
     "request": "^2.72.0"
   }
