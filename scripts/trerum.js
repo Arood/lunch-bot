@@ -2,7 +2,7 @@ function isNullOrWhitespace( input ) {
   return !input || input.trim().length < 1;
 }
 var dayName = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"];
-var entry = document.querySelector('.entry-content').textContent;
+var entry = document.querySelector('.entry-content').innerText;
 var lines = entry.split("\n").filter(function(l) { return !isNullOrWhitespace(l) }).map(function(l) { return l.trim(); });
 
 var today = dayName[(new Date).getDay()-1];

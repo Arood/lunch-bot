@@ -20,9 +20,9 @@ rule.minute = 0;
 // Sites to scrape for lunches
 
 var lunchSources = [
-	{ url: "https://www.matochmat.se/lunch/ostersund", js: "matochmat.js", name: "Mat och mat" },
+	{ url: "https://www.matochmat.se/lunch/ostersund", js: "matochmat.js", name: "Mat och mat", includeScripts: true },
 	//{ url: "http://lunchguide.nu/?page=ostersund", js: "lunchguide.js", name: "Lunchguide" },
-	//{ url: "http://www.restaurangtrerum.se/veckans-lunchmeny/", js: "trerum.js", name: "Tre Rum" },
+	{ url: "http://www.restaurangtrerum.se/veckans-lunchmeny/", js: "trerum.js", name: "Tre Rum" },
 	//{ url: "http://www.hosandreas.se/", js: "hosandreas.js", name: "Hos Andreas" },
 	//{ url: "https://www.max.se/sv/Maten/Meny/Maltider/Dagens-Lunch/", js: "max.js", name: "Max" },
 	//{ url: "http://example.com", js: "elvans.js", name: "Sibylla" },
@@ -42,11 +42,11 @@ var getLunches = function(array, done) {
 		jsdom.env({
 		  url: current.url,
 			src: [fs.readFileSync("scripts/"+current.js, "utf-8")],
-			features: {
+			features: current.includeScripts ? {
 				FetchExternalResources: ["script"],
 				ProcessExternalResources: ["script"],
 				SkipExternalResources: false
-			},
+			} : {},
 		  done: function (err, window) {
 				if (!err && window) {
 					if (window.scrapedField) {
